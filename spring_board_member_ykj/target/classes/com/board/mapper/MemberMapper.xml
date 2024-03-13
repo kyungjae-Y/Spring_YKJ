@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.board.mapper.MemberMapper">
+	<select id="getUserLists" resultType="com.board.entity.Member">
+		select * from user order by uIdx asc
+	</select>
+	
+	<insert id="userInsert" parameterType="com.board.entity.Member">
+		insert into user(uId, uPw, uName)
+		values(#{uId}, #{uPw}, #{uName})
+	</insert>
+	
+<!-- 
+	<select id="checkUser" parameterType="com.board.entity.Member">
+		select * from user where uId=#{uId} and uPw=#{uPw}
+	</select>
+-->
+	
+	<select id="userInfo" resultType="com.board.entity.Member">
+		select * from user where uId=#{uId}
+	</select>
+	
+	<delete id="userDelete" parameterType="Integer">
+		delete from user where uIdx=#{uIdx}
+	</delete>
+	
+	<update id="userUpdate" parameterType="com.board.entity.Member">
+		update user set uPw=#{uPw}, uName=#{uName} where uIdx=#{uIdx}
+	</update>
+	
+</mapper>

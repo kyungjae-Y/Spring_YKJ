@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.board.mapper.BoardMapper">
 	<select id="getLists" resultType="com.board.entity.Board">
-		select * from myboard order by idx desc
+		select * from pb order by idx desc
 	</select>
 	
 	<insert id="boardInsert" parameterType="com.board.entity.Board">
-		insert into myboard(title, content, writer)
+		insert into pb(title, content, writer)
 		values(#{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="boardContent" resultType="com.board.entity.Board">
-		select * from myboard where idx=#{idx}
+		select * from pb where idx=#{idx}
 	</select>
 	
 	<delete id="boardDelete" parameterType="int">
-		delete from myboard where idx=#{idx}
+		delete from pb where idx=#{idx}
 	</delete>
 	
 	<update id="boardUpdate" parameterType="com.board.entity.Board">
-		update myboard set title=#{title}, content=#{content} where idx=#{idx}
+		update pb set title=#{title}, content=#{content} where idx=#{idx}
 	</update>
 </mapper>
