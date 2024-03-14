@@ -8,9 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
+
 	@GetMapping("/")
 	public String home(Model model, HttpServletRequest request) {
 		model.addAttribute("cp", request.getContextPath());
-		return "index";
+		return "index"; // /WEB-INF/views/ + index +".jsp
+	}
+
+	@GetMapping("/home")
+	public String home() {
+		return "common/template";
+	}
+
+	@GetMapping("/boardMain.do")
+	public String main() {
+		return "board/main";
 	}
 }

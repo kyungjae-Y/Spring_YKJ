@@ -1,7 +1,6 @@
 let check = false;
 
 function registerCheck(cp) {
-/*
   let memID = document.getElementById('memID').value;
   if (!memID) {
     kindOfModal('panel-info');
@@ -17,13 +16,14 @@ function registerCheck(cp) {
       return response.json();
     })
     .then((result) => {
+      console.log("result", result)
       if (result === 1) {
         kindOfModal('panel-success');
-        changeMsg('사용할 수 있는 아이디입니다.');
+        changeMsg('사용할 수 있는 아이디입니다');
         check = true;
       } else {
         kindOfModal('panel-warning');
-        changeMsg('사용할 수 없는 아이디입니다.');
+        changeMsg('사용할 수 없는 아이디입니다');
         check = false;
       }
       showModal();
@@ -31,8 +31,6 @@ function registerCheck(cp) {
     .catch((error) => {
       console.error('There was a problem with the fetch operation:', error);
     });
-    */
-    check = true;
 }
 
 function passwordCheck() {
@@ -40,7 +38,7 @@ function passwordCheck() {
   let memPassword2 = document.getElementById('memPassword2').value;
   if (memPassword1 !== memPassword2) {
     document.getElementById('passMessage').innerHTML =
-      '비밀번호가 서로 일치하지 않습니다.';
+      '비밀번호가 서로 일치하지 않습니다';
   } else {
     document.getElementById('passMessage').innerHTML = '';
   }
@@ -49,7 +47,7 @@ function passwordCheck() {
 function goInsert() {
   let form = document.forms['frm'];
   if (form.memAge.value < 1 || form.memAge.value > 100) {
-    return alert(' 올바른 나이 입력해주세요 ');
+    return alert('올바른 나이 입력해주세요');
   }
   if (check) {
     document.forms['frm'].submit();
@@ -60,6 +58,16 @@ function goInsert() {
 }
 
 function goUpdate() {
-	// 실습
+  // 실습
+  let form = document.forms['updateForm'];
+  if (form.memAge.value < 1 || form.memAge.value > 100) {
+    alert('올바른 나이 입력해주세요');
+    return false;
+  }
+  if (!form.memPassword1.value || !form.memPassword2.value) {
+    changeMsg('비밀번호 입력해주세요');
+    showModal();
+    return false;
+  }
+  form.submit();
 }
-  
